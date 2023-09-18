@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+{% comment %} 
+class Article(models.Model):
+    articleTitle = models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.articleTitle
+
+
+class Page(models.Model):
+    pageTitle = models.CharField(max_length=255)
+    # Froala WYSIWYG Editor
+    contentFrola = FroalaField()
+    contentCkEditor = RichTextUploadingField()
+
+    # Relate the page to an article by using ForeignKey
+    articleTitleforPage = models.ForeignKey(Article, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f'{self.pageTitle} part of {self.articleTitleforPage.articleTitle}' {% endcomment %}
+
+
+<form method="post" class="mt-16">
+    {% csrf_token %}
+    <div>
+   <h1 class="font-bold text-blue-600"> {{ form.title.label }}</h1>
+    <div class="border p-3 text-md focus:outline-none focus:ring-0 focus:ring-offset-0 border-blue-300">{{ form.pageTitle }}</div>
+    </div>
+
+  <div>
+    <h1 class="font-bold text-blue-600"> {{ form.content.label }}</h1>
+   <div class="w-full mx-auto container">
+    {{ form.content|safe }}
+   </div>
+  </div>
+
+  <div>
+    <h1 class="font-bold text-blue-600"> {{ form.article.label }}</h1>
+    {{ form.article }}
+  </div>
+
+  <div>
+    <h1 class="font-bold text-blue-600"> {{ form.author.label }}</h1>
+    {{ form.author }}
+  </div>
+
+    
+
+    <input type="submit" value="Submit" class="cursor-pointer p-3 bg-blue-300 text-blue-600 rounded text-2xl mt-3 font-bold">
+
+
+</form>
+{% endblock content %}

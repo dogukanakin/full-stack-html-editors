@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="border-b-2 border-blue-900 w-full  mt-2 p-16 rounded ">
+    <h1 class="flex p-3 text-blue-900 items-center justify-center font-bold text-3xl">
+        Articles
+    </h1>
+    <div class="flex">
+        <div class="grid grid-cols-3">
+            {% for article in articles %}
+            <div class="flex p-3 bg-white shadow-rounded-md">
+            <a href="{% url 'list_pages' article.id %}">
+                    <h1 class="w-64 flex justify-center font-bold text-xl text-blue-800 p-4 border border-blue-900 rounded shadow-sm bg-gray-50">
+                        {{ article.title }}</h1>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock content %}

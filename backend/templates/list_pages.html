@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="flex mt-16 space-y-32">
+
+    <div class="flex flex-col space-y-2">
+        {% for page in pages %}
+        <div class="">
+            <a href="{% url 'view_page' page.id %}">
+                <h1 class="p-3 rounded  text-3xl font-bold flex text-center text-blue-600 items-center justify-center">
+                    {{ page.title }}</h1>
+            
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+
+  
+</div>
+{% endblock content %}

@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+    <div class="flex mt-16">
+        <div class="flex-2 w-3/12">
+            <h1 class="font-bold text-xl text-blue-800">
+                Related pages
+            </h1>
+
+            {% for page in related_pages %}
+            <ul class="mt-5">
+                <li>
+                    <a href="{% url 'view_page' page.id %}"><h3 class="text-blue-900 text-xl text-blue-800">{{ page.title }}</h3></a>
+                </li>
+            </ul>
+            {% endfor %}
+        </div>
+      <div>
+        <div class="flex font-bold text-3xl items-center justify-center">
+            {{ page.title }}
+        </div>
+        {{ page.content|safe }}
+      </div>
+
+      <div class="pl-3 text-lg text-blue-600">
+          Controls
+          <ul>
+              <li><a href="{% url 'update_page' page.id %}">Edit</a></li>
+              <li><a href="#">Delete</a></li>
+          </ul>
+      </div>
+    </div>
+
+{% endblock content %}
